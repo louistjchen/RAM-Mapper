@@ -1,0 +1,55 @@
+ECE1756 Assignment 3 README file
+- developer:	Louis Chen
+- date:		Nov 22, 2018
+
+Please read this file before compiling and launching the RAM Mapper.
+
+Please follow the steps below to achieve successful compilation.
+1)  Use <cd> to switch to the "assignment3" directory.
+2)  Type <make> or <make all> to compile the source code.
+    This will generate an executable called "RAM-Mapper".
+3)  Type <make clean> if wish to clean the project.
+
+Please follow the steps below to launch the application successfully.
+4)  Use <pwd> to make sure current directory is "assignment3".
+5)  To run the application, followings are multiple modes you can run.
+
+    For LUTRAM + 1 type of RAM:
+	./RAM-Mapper <logical_rams.txt> <logic_block_count.txt> <output_mapping_file.txt> \
+		<RAM size> <RAM max width> <RAM logic block ratio> \
+		-t -mjt
+
+    For LUTRAM + 2 types of RAM
+	./RAM-Mapper <logical_rams.txt> <logic_block_count.txt> <output_mapping_file.txt> \
+		<RAM1 size> <RAM1 max width> <RAM1 logic block ratio> \
+		<RAM2 size> <RAM2 max width> <RAM2 logic block ratio> \
+		-t -mjt
+
+    <-t> and <-mjt> are optional.
+    If <-t> is specified, the application will output geometric average area.
+    If <-mjt> is specified, the application will use MJT-based architecture instead of SRAM-based.
+
+6)  For the default architecture (LUTRAM + M8KRAM + M128KRAM), the following
+    is the command to generate mapping file that passes the checker.
+    Mapping file for this architecture is included in the "results" folder called
+    "mapping_file_default.txt"
+
+	./RAM-Mapper <logical_rams.txt> <logic_block_count.txt> <output_mapping_file.txt> \
+		8192 32 10 131072 128 300 -t
+
+7)  For the best SRAM-based architecture, type the following command.
+    Mapping file for this architecture is included in the "results" folder called
+    "mapping_file_best_SRAM.txt"
+
+	./RAM-Mapper <logical_rams.txt> <logic_block_count.txt> <output_mapping_file.txt> \
+		4096 16 10 16384 16 20 -t
+
+8)  For the best MJT-based architecture, type the following command.
+    Mapping file for this architecture is included in the "results" folder called
+    "mapping_file_best_MJT.txt"
+
+	./RAM-Mapper <logical_rams.txt> <logic_block_count.txt> <output_mapping_file.txt> \
+		4096 16 10 32768 16 20 -t -mjt
+
+Hope you had a great time exploring my RAM Mapper program! :)
+
